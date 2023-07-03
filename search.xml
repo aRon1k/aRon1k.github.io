@@ -18,4 +18,81 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>java疑点速记</title>
+    <url>/2023/01/01/java%E7%96%91%E7%82%B9%E9%80%9F%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="java的重载"><a href="#java的重载" class="headerlink" title="java的重载"></a>java的重载</h1><p>理解Java重载：</p>
+<ol>
+<li>方法名相同：重载的方法必须具有相同的名称。</li>
+<li>参数列表不同：重载的方法参数列表必须不同，可以有不同的参数类型、参数数量或参数顺序。</li>
+<li>返回类型不影响重载：重载的方法可以具有不同的返回类型，只要参数列表不同即可。</li>
+<li>与访问修饰符无关：重载的方法可以拥有不同的访问修饰符，例如 public、private 或 protected。</li>
+<li>静态方法和实例方法可以重载：静态方法和实例方法之间可以进行重载，它们可以具有相同的名称但不同的参数列表。</li>
+</ol>
+<p>通过重载方法，可以为同一个类提供不同的方法签名，以应对不同的需求。当调用该方法时，编译器会根据参数的类型和数量选择合适的重载方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        SUM c=<span class="keyword">new</span> <span class="title class_">SUM</span>();</span><br><span class="line">        </span><br><span class="line">        System.out.print(c.add(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line">        <span class="comment">//or</span></span><br><span class="line">        System.out.print(c.add(<span class="number">2.0</span>,<span class="number">3.2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//重载</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SUM</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a , <span class="type">int</span> b)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">add</span><span class="params">(<span class="type">double</span> a ,<span class="type">double</span> b)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="java的构造方法"><a href="#java的构造方法" class="headerlink" title="java的构造方法"></a>java的构造方法</h1><ol>
+<li>构造方法与类同名：构造方法的名称必须与所属类的名称完全相同。</li>
+<li>不带返回类型：构造方法没有返回类型声明，包括 <code>void</code>。</li>
+<li>用于对象的创建和初始化：构造方法在使用 <code>new</code> 关键字实例化对象时被调用，它负责创建对象并为对象分配内存空间。</li>
+<li>可以有参数：构造方法可以接受参数，在创建对象时传递初始化所需的参数。</li>
+<li>可以重载：可以定义多个构造方法，每个构造方法可以接受不同数量或类型的参数，称为构造方法的重载。</li>
+</ol>
+<p>通过构造方法，可以在对象实例化时进行属性的初始化以及其他必要的操作。构造方法在对象创建过程中起到关键的作用，确保对象在创建后具有合适的初始状态。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Person c=<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;pro&quot;</span>,<span class="number">12</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name,<span class="type">int</span> age)</span>&#123;</span><br><span class="line">		<span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Person c=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">    	System.out.print(c.name);</span><br><span class="line">        System.out.print(c.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span>&#123;</span><br><span class="line">		name=<span class="string">&quot;pro&quot;</span>;</span><br><span class="line">        age=<span class="number">12</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="java访问修饰符"><a href="#java访问修饰符" class="headerlink" title="java访问修饰符"></a>java访问修饰符</h1><ol>
+<li><code>public（公共的）</code>：被public修饰的类、变量、方法或构造函数可以被任何其他类访问。</li>
+<li><code>private（私有的）</code>：被private修饰的类、变量、方法或构造函数只能在定义它们的类内部访问，其他任何类都无法访问。</li>
+<li><code>protected（受保护的）</code>：被protected修饰的类、变量、方法或构造函数可以在同一包内的其他类中访问，也可以被不同包中的子类访问。</li>
+<li><code>默认访问修饰符（默认的）</code>：如果没有指定任何访问修饰符，默认访问修饰符将被应用。默认访问修饰符允许在同一包内的其他类中访问，但在不同包内是不可访问的。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>同一个类</th>
+<th>同一个包</th>
+<th>不同包的子类</th>
+<th>不同包的非子类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td></td>
+</tr>
+<tr>
+<td>默认</td>
+<td>✔️</td>
+<td>✔️</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>private</td>
+<td>✔️</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="java（OOP）封装，继承，多态"><a href="#java（OOP）封装，继承，多态" class="headerlink" title="java（OOP）封装，继承，多态"></a>java（OOP）封装，继承，多态</h1>]]></content>
+  </entry>
 </search>
